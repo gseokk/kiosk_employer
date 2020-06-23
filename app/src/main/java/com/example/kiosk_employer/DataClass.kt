@@ -28,13 +28,14 @@ data class Table(
 )
 
 data class Order(
-    val name: String? = null,
-    val table: Int? = null,
-    val menu: List<Pair<String, Int>>? = null,
-    val timestamp: Timestamp
+    var name: String? = null,
+    var table: Int? = null,
+    var menu: List<String>? = null,
+    var timestamp: Timestamp? = null,
+    var flag: Boolean ? = null
 )
-/*
-data class Type(
+
+/*data class Type(
     val first: String? = null,
     val second: Int? = null
 )*/

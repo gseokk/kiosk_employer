@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    android:id="@+id/ll"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".orderActivity">
+    android:orientation="vertical"
+    tools:context="com.example.kiosk_employer.tableActivity">
+
+
+    <LinearLayout
+        android:id="@+id/for_text"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:orientation="horizontal"
+        tools:context="com.example.kiosk_employer.tableActivity"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/for_button"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:orientation="horizontal"
+        tools:context="com.example.kiosk_employer.tableActivity"></LinearLayout>
+    <!--
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로딩중..."
-        android:textSize="20sp"
         android:id="@+id/order"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="163dp"
+        android:text="로딩중..."
+        android:textSize="20sp" />
+-->
+
+</LinearLayout>
+
+
