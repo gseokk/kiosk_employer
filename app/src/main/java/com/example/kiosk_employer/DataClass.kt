@@ -36,7 +36,8 @@ data class Order(
     var table: Int? = null,
     var menu: MutableList<String>? = null,
     var timestamp: Timestamp ? = null,
-    var flag: Boolean ? = null
+    var flag: Boolean ? = null,
+    var totalAmount : Int? = null
 )
 
 object OrderCount {
