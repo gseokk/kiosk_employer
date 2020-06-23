@@ -28,69 +28,64 @@ class orderActivity : AppCompatActivity() {
 
         //var content=findViewById<TextView>(R.id.order)
 
-        val docRef = db.collection("order").document("중국집")
+        val docRef = db.collection("order").document("신수동_중국집")
         docRef.addSnapshotListener(EventListener<DocumentSnapshot> { snapshot, e ->
             if(e != null){
                 Log.w(TAG, "Listen failed.", e)
                 return@EventListener
             }
             if(snapshot != null && snapshot.exists()){
-                var order = snapshot.toObject(Order::class.java)
+                var order = snapshot.toObject(OrderList::class.java)
+                //Log.d(TAG,order!!.toString())
+                var myLinearLayout = findViewById<LinearLayout>(R.id.ll)
+                myLinearLayout.removeAllViews()
 
-                var name=order!!.name!!.toString()
-                var table= order!!.table!!.toString()
-                var timestamp=order!!.timestamp
+                for(i in 0..order!!.orderList!!.size-1) {
+                    var flag = order!!.orderList!![i].flag
 
-                //val date = timestamp.toDate()
-                var menu = order!!.menu!!
-                var text:String =""
-                text=text+"식당이름 : " + name + "\n"
-                text=text+"테이블 번호 : " + table + "\n"
-                text=text+"시간 : " + timestamp!!.toDate().toString() + "\n"
-                for(x in 0..menu.size-1){
-                    var tmp=menu[x].split(",")
-                    text= text+ tmp[0] +" : "+ tmp[1]+"개\n"
+                    if (flag == false) {
+                        var name = order!!.orderList!![i].name!!.toString()
+                        var table = order!!.orderList!![i].table!!.toString()
+                        var timestamp = order!!.orderList!![i].timestamp
+
+                        //val date = timestamp.toDate()
+                        var menu = order!!.orderList!![i].menu!!
+                        var text: String = "------------------------------------------------------------------------\n"
+                        text = text + "식당이름 : " + name + "\n"
+                        text = text + "테이블 번호 : " + table + "\n"
+                        text = text + "시간 : " + timestamp!!.toDate().toString() + "\n"
+                        for (x in 0..menu.size - 1) {
+                            var tmp = menu[x].split(",")
+                            text = text + tmp[0] + " : " + tmp[1] + "개\n"
+                        }
+                        text =
+                            text + "------------------------------------------------------------------------"
+
+                        var textView = TextView(this)
+                        //content.setText(text)
+                        textView.setText(text)
+                        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20F)
+                        var button_yes = Button(this)
+                        var button_no = Button(this)
+
+                        button_yes.setText("yes")
+                        button_yes.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15F)
+
+                        myLinearLayout.addView(textView)
+                        myLinearLayout.addView(button_yes)
+
+
+                        button_yes.setOnClickListener {
+                            Toast.makeText(this, "${table}번 테이블 주문을 승인했습니다.", Toast.LENGTH_SHORT)
+                                .show()
+
+                            order!!.orderList!![i].flag = true
+                            db.collection("order").document("신수동_중국집")
+                                .set(order, SetOptions.merge())
+
+                        }
+                    }
                 }
-                text=text+"------------------------------------------------------------------------"
-
-                var textView=TextView(this)
-                //content.setText(text)
-                textView.setText(text)
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20F)
-                var button_yes= Button(this)
-                var button_no= Button(this)
-
-                var myLinearLayout_1=findViewById<LinearLayout>(R.id.for_text)
-                var myLinearLayout_2=findViewById<LinearLayout>(R.id.for_button)
-                myLinearLayout_1.removeAllViews()
-                myLinearLayout_2.removeAllViews()
-
-                button_yes.setText("yes")
-                button_yes.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15F)
-
-                button_no.setText("no")
-                button_no.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15F)
-
-                myLinearLayout_1.addView(textView)
-                myLinearLayout_2.addView(button_yes)
-                myLinearLayout_2.addView(button_no)
-
-
-                button_yes.setOnClickListener {
-                    Toast.makeText(this,"${table}번 테이블 주문을 승인했습니다.", Toast.LENGTH_SHORT).show()
-
-                    order!!.flag= true
-                    db.collection("order").document("중국집").set(order, SetOptions.merge())
-
-                }
-                button_no.setOnClickListener {
-                    Toast.makeText(this,"${table}번 테이블 주문을 거절했습니다.", Toast.LENGTH_SHORT).show()
-
-                    order!!.flag= false
-                    db.collection("order").document("중국집").set(order, SetOptions.merge())
-
-                }
-
             } else {
                 Log.d(TAG, "Current data: null")
             }

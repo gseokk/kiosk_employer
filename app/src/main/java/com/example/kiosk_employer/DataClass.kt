@@ -27,15 +27,18 @@ data class Table(
     var availability: Boolean? = null
 )
 
+data class OrderList(
+    var orderList: MutableList<Order>? = null
+)
+
 data class Order(
     var name: String? = null,
     var table: Int? = null,
-    var menu: List<String>? = null,
-    var timestamp: Timestamp? = null,
+    var menu: MutableList<String>? = null,
+    var timestamp: Timestamp ? = null,
     var flag: Boolean ? = null
 )
 
-/*data class Type(
-    val first: String? = null,
-    val second: Int? = null
-)*/
+object OrderCount {
+    var list = mutableListOf(0, 0, 0)
+}

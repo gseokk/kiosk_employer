@@ -9,19 +9,7 @@
     tools:context="com.example.kiosk_employer.tableActivity">
 
 
-    <LinearLayout
-        android:id="@+id/for_text"
-        android:layout_width="match_parent"
-        android:layout_height="235dp"
-        android:orientation="horizontal"
-        tools:context="com.example.kiosk_employer.tableActivity"></LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/for_button"
-        android:layout_width="match_parent"
-        android:layout_height="235dp"
-        android:orientation="horizontal"
-        tools:context="com.example.kiosk_employer.tableActivity"></LinearLayout>
     <!--
     <TextView
         android:id="@+id/order"
