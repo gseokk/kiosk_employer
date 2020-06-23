@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="124dp"
+        android:layout_height="51dp"
+        android:text="점주app 시작화면"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <Button
+        android:id="@+id/table_mn_btn"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginLeft="144dp"
+        android:text="테이블 관리"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359"></Button>
+
+    <Button
+        android:id="@+id/order_mn_btn"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginLeft="140dp"
+        android:text="주문 관리"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.649"></Button>
+    >
+</androidx.constraintlayout.widget.ConstraintLayout>
